@@ -1,20 +1,19 @@
 import 'dart:convert';
-
+import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:folio/screens/stock_basic_info_screen.dart';
-import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:folio/screens/stock/stock_basic_info_screen.dart';
 
-class DividendStars extends StatefulWidget {
-  const DividendStars({Key? key}) : super(key: key);
+class MediumTermTrades extends StatefulWidget {
+  const MediumTermTrades({Key? key}) : super(key: key);
 
   @override
-  State<DividendStars> createState() => _DividendStarsState();
+  State<MediumTermTrades> createState() => _MediumTermTradesState();
 }
 
-class _DividendStarsState extends State<DividendStars> {
+class _MediumTermTradesState extends State<MediumTermTrades> {
   final LocalStorage myStorage = LocalStorage('fintech');
   String _stockCode = "";
 
@@ -26,7 +25,7 @@ class _DividendStarsState extends State<DividendStars> {
   _sendDetails() async {
     await myStorage.ready;
 
-    const baseURL = 'http://4a67-110-226-206-82.ngrok.io/api';
+    const baseURL = 'http://127.0.0.1:8000/api';
     final url = Uri.parse('$baseURL/search/');
 
     Response response = await post(url, body: {
@@ -152,7 +151,7 @@ class _DividendStarsState extends State<DividendStars> {
           },
         ),
         title: const Text(
-          'Dividend Stars',
+          'Medium Term Picks',
           style: TextStyle(
               color: Colors.white,
               fontSize: 19,
@@ -178,6 +177,41 @@ class _DividendStarsState extends State<DividendStars> {
                 child: Column(children: [
                   stocktabs(
                       context,
+                      "Bajaj Finserv Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/bajaj-finserv--big.svg",
+                      "16749.00",
+                      "BAJAJFINSV"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Shree Cement Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/shree-cement--big.svg",
+                      "25260.65",
+                      "SHREECEM"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "UltraTech Cement Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/ultratech-cement--big.svg",
+                      "6837.00",
+                      "ULTRACEMCO"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Tech Mahindra Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/mahindra-tech--big.svg",
+                      "1448.75",
+                      "TECHM"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Tata Steel Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/tata--big.svg",
+                      "1370.75",
+                      "TATASTEEL"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
                       "Hindustan Unilever Ltd.",
                       "https://s3-symbol-logo.tradingview.com/unilever--big.svg",
                       "2183.05",
@@ -185,45 +219,10 @@ class _DividendStarsState extends State<DividendStars> {
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
-                      "Britannia Industries Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/britannia--big.svg",
-                      "3347.9",
-                      "BRITANNIA"),
-                  const SizedBox(height: 20),
-                  stocktabs(
-                      context,
-                      "HCL Technologies Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/hcl-technologies--big.svg",
-                      "1165.35",
-                      "HCLTECH"),
-                  const SizedBox(height: 20),
-                  stocktabs(
-                      context,
-                      "ITC Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/itc--big.svg",
-                      "267.08",
-                      "ITC"),
-                  const SizedBox(height: 20),
-                  stocktabs(
-                      context,
-                      "Infosys Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/infosys--big.svg",
-                      "1814.6",
-                      "INFY"),
-                  const SizedBox(height: 20),
-                  stocktabs(
-                      context,
-                      "Coal India Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/coal-india--big.svg",
-                      "194.55",
-                      "COALINDIA"),
-                  const SizedBox(height: 20),
-                  stocktabs(
-                      context,
-                      "Bharat Petroleum Corporation Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/bharat-petroleum--big.svg",
-                      "384.55",
-                      "BPCL"),
+                      "Dr. Reddy's Laboratories Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/dr-reddys--big.svg",
+                      "4430.35",
+                      "DRREDDY"),
                 ]),
               ),
             ]),

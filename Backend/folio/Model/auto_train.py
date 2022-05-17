@@ -11,7 +11,7 @@ import Model.model_creation
 def get_nifty50():
 
     return pd.read_csv(
-        "C:\\Users\\Aayus\\Desktop\\temp\\Backend\\fintech\\API\\ind_nifty50list.csv"
+        "../ind_nifty50list.csv"
     )
 
 
@@ -30,7 +30,8 @@ def table_create(connection):
 def table_addition(connection, data):
     for i in data.iterrows():
         connection.execute(
-            "INSERT INTO TICKERS (CODE) VALUES ('{}')".format(i[1][1].replace("'", ""))
+            "INSERT INTO TICKERS (CODE) VALUES ('{}')".format(
+                i[1][1].replace("'", ""))
         )
         connection.commit()
 
@@ -73,7 +74,7 @@ def add_new_ticker(ticker, connection):
 def add_prediction(
     Code, PredictionDay, PredictionWeek, PredictionMonth, PrevClose, PrevDate
 ):
-    con = sqlite3.connect("Databases//tickerdb.sqlite3")
+    con = sqlite3.connect("../Databases/tickerdb.sqlite3")
     cur = con.cursor()
     cur.execute(
         """UPDATE TICKERS SET 
@@ -96,7 +97,7 @@ def add_prediction(
 
 
 def db_train():
-    con = sqlite3.connect("Databases//tickerdb.sqlite3")
+    con = sqlite3.connect("../Databases/tickerdb.sqlite3")
     cur = con.cursor()
     cur.execute("SELECT * FROM TICKERS")
     rows = cur.fetchall()
@@ -115,7 +116,7 @@ def db_train():
 
 
 def clear_temp_values():
-    con = sqlite3.connect("Databases//tickerdb.sqlite3")
+    con = sqlite3.connect("../Databases/tickerdb.sqlite3")
     cur = con.cursor()
     cur.execute(
         """DELETE FROM TICKERS WHERE 

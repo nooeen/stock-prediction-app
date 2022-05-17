@@ -5,13 +5,13 @@ from dateutil.relativedelta import *
 
 
 def return_logo(symbol):
-    df = pd.read_csv("API\ind_nifty50list.csv")
+    df = pd.read_csv("API/ind_nifty50list.csv")
     df = df[df["Symbol"] == symbol]
     return df["Logo"].values[0]
 
 
 def return_company(symbol):
-    df = pd.read_csv("API\ind_nifty50list.csv")
+    df = pd.read_csv("API/ind_nifty50list.csv")
     df = df[df["Symbol"] == symbol]
     return df["Company"].values[0]
 
@@ -24,5 +24,5 @@ def return_latest_close(symbol):
 
 
 def return_symbols():
-    df = pd.read_csv("API\ind_nifty50list.csv")
+    df = pd.read_csv("API/ind_nifty50list.csv")
     return df["Symbol"].values

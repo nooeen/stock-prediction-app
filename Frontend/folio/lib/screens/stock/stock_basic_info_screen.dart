@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:folio/screens/add_stock_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:folio/screens/stock/add_stock_screen.dart';
 
 class NewStockScreen extends StatefulWidget {
   const NewStockScreen({Key? key}) : super(key: key);

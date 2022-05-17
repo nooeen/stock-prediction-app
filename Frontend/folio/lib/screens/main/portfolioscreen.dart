@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:folio/screens/add_stock_screen.dart';
-import 'package:folio/screens/existing_stock_screen.dart';
+import 'package:folio/screens/stock/add_stock_screen.dart';
+import 'package:folio/screens/stock/existing_stock_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
@@ -21,11 +21,6 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
   double _long = 0.0;
 
   @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     setState(() {
       _portfolioStocks = myStorage.getItem("Portfolio") ?? [];
@@ -43,7 +38,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
         scrollDirection: Axis.vertical,
         child: Column(children: [
           Container(
-            color: const Color(0xff151321),
+            color: Colors.white,
             child: Column(children: [
               Container(
                 padding: const EdgeInsets.only(
@@ -58,8 +53,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                       const Text(
                         'My Portfolio',
                         style: TextStyle(
-                          color: Color(0xffffffff),
-                          fontFamily: "Avenir",
+                          color: Colors.black,
+                          fontFamily: "Trueno",
                           fontSize: 20,
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.none,
@@ -67,7 +62,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                       ),
                       IconButton(
                         alignment: Alignment.center,
-                        icon: Image.asset('assets/images/add_icon.png'),
+                        icon: const Icon(Icons.add),
+                        color: Colors.black,
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -91,7 +87,15 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: const Color(0xff212230),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: const Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
                 ),
                 padding: const EdgeInsets.all(16),
                 child: Column(children: [
@@ -107,10 +111,10 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                             Container(
                               padding: const EdgeInsets.only(left: 5),
                               child: const Text(
-                                'Your Portfolio\'s Value',
+                                'Current Value',
                                 style: TextStyle(
-                                  color: Color(0xffc0c0c0),
-                                  fontFamily: "Avenir",
+                                  color: Colors.black,
+                                  fontFamily: "Trueno",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w800,
                                   decoration: TextDecoration.none,
@@ -125,7 +129,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                                 style: const TextStyle(
                                     color: Color(0xffffcd4c),
                                     fontSize: 20,
-                                    fontFamily: "Avenir",
+                                    fontFamily: "Trueno",
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none),
                               ),
@@ -142,8 +146,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                               child: const Text(
                                 'Change %',
                                 style: TextStyle(
-                                  color: Color(0xffc0c0c0),
-                                  fontFamily: "Avenir",
+                                  color: Colors.black,
+                                  fontFamily: "Trueno",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w800,
                                   decoration: TextDecoration.none,
@@ -162,7 +166,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                                             ? const Color(0xffF44336)
                                             : const Color(0xffffcd4c),
                                     fontSize: 20,
-                                    fontFamily: "Avenir",
+                                    fontFamily: "Trueno",
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none),
                               ),
@@ -185,8 +189,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                               child: const Text(
                                 'Medium Term Outlook',
                                 style: TextStyle(
-                                  color: Color(0xffc0c0c0),
-                                  fontFamily: "Avenir",
+                                  color: Colors.black,
+                                  fontFamily: "Trueno",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w800,
                                   decoration: TextDecoration.none,
@@ -205,7 +209,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                                             ? const Color(0xffF44336)
                                             : const Color(0xffffcd4c),
                                     fontSize: 20,
-                                    fontFamily: "Avenir",
+                                    fontFamily: "Trueno",
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none),
                               ),
@@ -224,8 +228,8 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                                 child: const Text(
                                   'Long Term Outlook',
                                   style: TextStyle(
-                                    color: Color(0xffc0c0c0),
-                                    fontFamily: "Avenir",
+                                    color: Colors.black,
+                                    fontFamily: "Trueno",
                                     fontSize: 14,
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none,
@@ -247,7 +251,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                                             ? const Color(0xffF44336)
                                             : const Color(0xffffcd4c),
                                     fontSize: 20,
-                                    fontFamily: "Avenir",
+                                    fontFamily: "Trueno",
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none),
                               ),
@@ -270,7 +274,7 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                             : (_medium >= _change)
                                 ? const Color(0xffffcd4c)
                                 : const Color(0xffF44336),
-                        fontFamily: "Avenir",
+                        fontFamily: "Trueno",
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
                         decoration: TextDecoration.none,
@@ -287,9 +291,9 @@ class _PortfolioScreenState extends State<PortfolioScreen> {
                     Text(
                       "Your Stocks",
                       style: TextStyle(
-                          color: Color(0xffc0c0c0),
+                          color: Colors.black,
                           fontSize: 14,
-                          fontFamily: "Avenir",
+                          fontFamily: "Trueno",
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.none),
                     ),
@@ -341,7 +345,15 @@ portfolioStock(
       margin: const EdgeInsets.fromLTRB(5, 10, 10, 5),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: const Color(0xff212230),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ],
       ),
       padding: const EdgeInsets.all(16),
       child: Row(
@@ -366,32 +378,6 @@ portfolioStock(
                       width: 45,
                     ),
                     const SizedBox(height: 10),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Qty",
-                        style: TextStyle(
-                          color: Color(0xffc0c0c0),
-                          fontSize: 14,
-                          fontFamily: "Avenir",
-                          fontWeight: FontWeight.w800,
-                          decoration: TextDecoration.none,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        "$quantity",
-                        style: const TextStyle(
-                          color: Color(0xffffffff),
-                          fontSize: 16,
-                          fontFamily: "Avenir",
-                          fontWeight: FontWeight.w800,
-                          decoration: TextDecoration.none,
-                        ),
-                      ),
-                    ),
                   ],
                 ),
                 Column(
@@ -408,8 +394,8 @@ portfolioStock(
                         maxLines: 1,
                         softWrap: false,
                         style: const TextStyle(
-                          color: Color(0xffffffff),
-                          fontFamily: "Avenir",
+                          color: Colors.black,
+                          fontFamily: "Trueno",
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.none,
@@ -424,9 +410,9 @@ portfolioStock(
                           Text(
                             "Price: ₹ $lastClose",
                             style: const TextStyle(
-                              color: Color(0xffc0c0c0),
+                              color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "Avenir",
+                              fontFamily: "Trueno",
                               fontWeight: FontWeight.w800,
                               decoration: TextDecoration.none,
                             ),
@@ -439,9 +425,9 @@ portfolioStock(
                                     ? "↓ $change%"
                                     : "~ $change%",
                             style: const TextStyle(
-                              color: Color(0xffc0c0c0),
+                              color: Colors.black,
                               fontSize: 14,
-                              fontFamily: "Avenir",
+                              fontFamily: "Trueno",
                               fontWeight: FontWeight.w800,
                               decoration: TextDecoration.none,
                             ),
@@ -460,11 +446,11 @@ portfolioStock(
                                 alignment: Alignment.centerLeft,
                                 padding: const EdgeInsets.only(left: 15),
                                 child: const Text(
-                                  "Invested Value",
+                                  "Invested",
                                   style: TextStyle(
-                                    color: Color(0xffc0c0c0),
+                                    color: Colors.black,
                                     fontSize: 14,
-                                    fontFamily: "Avenir",
+                                    fontFamily: "Trueno",
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none,
                                   ),
@@ -476,9 +462,9 @@ portfolioStock(
                                 child: Text(
                                   "₹ $invested",
                                   style: const TextStyle(
-                                    color: Color(0xffffffff),
+                                    color: Colors.black,
                                     fontSize: 16,
-                                    fontFamily: "Avenir",
+                                    fontFamily: "Trueno",
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none,
                                   ),
@@ -495,9 +481,9 @@ portfolioStock(
                                 child: const Text(
                                   "Gain/Loss",
                                   style: TextStyle(
-                                    color: Color(0xffc0c0c0),
+                                    color: Colors.black,
                                     fontSize: 14,
-                                    fontFamily: "Avenir",
+                                    fontFamily: "Trueno",
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none,
                                   ),
@@ -509,9 +495,40 @@ portfolioStock(
                                 child: Text(
                                   "₹ $gain",
                                   style: const TextStyle(
-                                    color: Color(0xffffffff),
+                                    color: Colors.black,
                                     fontSize: 16,
-                                    fontFamily: "Avenir",
+                                    fontFamily: "Trueno",
+                                    fontWeight: FontWeight.w800,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(width: 25),
+                          Column(
+                            children: [
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: const Text(
+                                  "Qty",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 14,
+                                    fontFamily: "Trueno",
+                                    fontWeight: FontWeight.w800,
+                                    decoration: TextDecoration.none,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "$quantity",
+                                  style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 16,
+                                    fontFamily: "Trueno",
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none,
                                   ),

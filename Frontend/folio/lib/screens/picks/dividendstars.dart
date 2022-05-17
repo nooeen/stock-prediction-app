@@ -1,20 +1,19 @@
 import 'dart:convert';
-
+import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:folio/screens/stock_basic_info_screen.dart';
-import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:folio/screens/stock/stock_basic_info_screen.dart';
 
-class ShortTermTrades extends StatefulWidget {
-  const ShortTermTrades({Key? key}) : super(key: key);
+class DividendStars extends StatefulWidget {
+  const DividendStars({Key? key}) : super(key: key);
 
   @override
-  State<ShortTermTrades> createState() => _ShortTermTradesState();
+  State<DividendStars> createState() => _DividendStarsState();
 }
 
-class _ShortTermTradesState extends State<ShortTermTrades> {
+class _DividendStarsState extends State<DividendStars> {
   final LocalStorage myStorage = LocalStorage('fintech');
   String _stockCode = "";
 
@@ -152,7 +151,7 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
           },
         ),
         title: const Text(
-          'Short Term Picks',
+          'Dividend Stars',
           style: TextStyle(
               color: Colors.white,
               fontSize: 19,
@@ -178,31 +177,31 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
                 child: Column(children: [
                   stocktabs(
                       context,
-                      "Bajaj Finserv Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/bajaj-finserv--big.svg",
-                      "16749.00",
-                      "BAJAJFINSV"),
+                      "Hindustan Unilever Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/unilever--big.svg",
+                      "2183.05",
+                      "HINDUNILVR"),
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
-                      "Maruti Suzuki India Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/maruti-suzuki-india--big.svg",
-                      "7557.95",
-                      "MARUTI"),
+                      "Britannia Industries Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/britannia--big.svg",
+                      "3347.9",
+                      "BRITANNIA"),
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
-                      "UltraTech Cement Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/ultratech-cement--big.svg",
-                      "6837.00",
-                      "ULTRACEMCO"),
+                      "HCL Technologies Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/hcl-technologies--big.svg",
+                      "1165.35",
+                      "HCLTECH"),
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
-                      "Tech Mahindra Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/mahindra-tech--big.svg",
-                      "1448.75",
-                      "TECHM"),
+                      "ITC Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/itc--big.svg",
+                      "267.08",
+                      "ITC"),
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
@@ -213,17 +212,17 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
-                      "Tata Consultancy Services Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/tata--big.svg",
-                      "3685.65",
-                      "TCS"),
+                      "Coal India Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/coal-india--big.svg",
+                      "194.55",
+                      "COALINDIA"),
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
-                      "Britannia Industries Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/britannia--big.svg",
-                      "3482.64",
-                      "BRITANNIA"),
+                      "Bharat Petroleum Corporation Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/bharat-petroleum--big.svg",
+                      "384.55",
+                      "BPCL"),
                 ]),
               ),
             ]),

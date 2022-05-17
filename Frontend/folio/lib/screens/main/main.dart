@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:folio/screens/picksscreen.dart';
-import 'package:folio/screens/portfolioscreen.dart';
-import 'package:folio/screens/searchscreen.dart';
-import 'homescreen.dart';
+import 'package:folio/screens/main/picksscreen.dart';
+import 'package:folio/screens/main/portfolioscreen.dart';
+import 'package:folio/screens/main/searchscreen.dart';
+import 'package:folio/screens/main/homescreen.dart';
 
-class BottomNavigation extends StatefulWidget {
-  const BottomNavigation({Key? key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
   @override
-  State<BottomNavigation> createState() => _BottomNavigationState();
+  State<MainScreen> createState() => _MainScreenState();
 }
 
-class _BottomNavigationState extends State<BottomNavigation> {
+class _MainScreenState extends State<MainScreen> {
   var _currentIndex = 0;
 
   final List<Widget> _children = [
@@ -30,10 +30,10 @@ class _BottomNavigationState extends State<BottomNavigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF10111A),
+      backgroundColor: Colors.white,
       body: _children[_currentIndex],
       bottomNavigationBar: Container(
-        color: const Color(0xFF10111A),
+        color: Colors.white,
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
           vertical: 10,
@@ -46,37 +46,33 @@ class _BottomNavigationState extends State<BottomNavigation> {
             fontSize: 14,
             fontWeight: FontWeight.w600,
             color: Color(0xffFFCF00),
-            fontFamily: "Avenir",
+            fontFamily: "Trueno",
           ),
           unselectedLabelStyle: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w600,
             color: const Color(0xffFFCF00).withOpacity(0.5),
-            fontFamily: "Avenir",
+            fontFamily: "Trueno",
           ),
-          backgroundColor: const Color(0xFF10111A),
+          backgroundColor: Colors.white,
           selectedItemColor: const Color(0xFFF3AF00),
-          unselectedItemColor: Colors.white,
+          unselectedItemColor: Colors.black,
           currentIndex: _currentIndex,
-          items: [
+          items: const [
             BottomNavigationBarItem(
-              icon: SizedBox(
-                  width: 27, child: Image.asset('assets/images/Home.png')),
+              icon: SizedBox(width: 27, child: Icon(Icons.home_rounded)),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: SizedBox(
-                  width: 27, child: Image.asset('assets/images/Wallet.png')),
+              icon: SizedBox(width: 27, child: Icon(Icons.wallet_rounded)),
               label: 'Portfolio',
             ),
             BottomNavigationBarItem(
-              icon: SizedBox(
-                  width: 27, child: Image.asset('assets/images/Search.png')),
+              icon: SizedBox(width: 27, child: Icon(Icons.search)),
               label: 'Search',
             ),
             BottomNavigationBarItem(
-              icon: SizedBox(
-                  width: 27, child: Image.asset('assets/images/Report.png')),
+              icon: SizedBox(width: 27, child: Icon(Icons.pages_rounded)),
               label: 'Picks',
             ),
           ],

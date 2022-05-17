@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:folio/screens/stock_basic_info_screen.dart';
+import 'package:folio/screens/stock/stock_basic_info_screen.dart';
 import 'package:localstorage/localstorage.dart';
 import 'dart:convert';
 import 'package:http/http.dart';
@@ -24,7 +24,7 @@ class _SearchStockState extends State<SearchStock> {
   _sendDetails() async {
     await myStorage.ready;
 
-    const baseURL = 'http://4a67-110-226-206-82.ngrok.io/api';
+    const baseURL = 'http://127.0.0.1:8000/api';
     final url = Uri.parse('$baseURL/search/');
 
     Response response = await post(url, body: {

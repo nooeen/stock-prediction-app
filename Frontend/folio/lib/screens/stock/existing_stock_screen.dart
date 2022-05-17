@@ -38,7 +38,7 @@ class _StockScreenState extends State<StockScreen> {
     _stockCode = await myStorage.getItem('stockCode');
     _email = await myStorage.getItem('Email');
 
-    const baseURL = 'http://4a67-110-226-206-82.ngrok.io/api';
+    const baseURL = 'http://127.0.0.1:8000/api';
     final url = Uri.parse('$baseURL/search/');
 
     Response response = await post(url, body: {
@@ -75,7 +75,7 @@ class _StockScreenState extends State<StockScreen> {
   }
 
   _sendDetails() async {
-    const baseURL = 'http://4a67-110-226-206-82.ngrok.io/api';
+    const baseURL = 'http://127.0.0.1:8000/api';
     final url = Uri.parse('$baseURL/removestock/');
 
     await myStorage.ready;

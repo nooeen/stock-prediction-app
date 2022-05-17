@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:folio/screens/dividendstars.dart';
-import 'package:folio/screens/longtermtrades.dart';
-import 'package:folio/screens/mediumtermtrades.dart';
-import 'package:folio/screens/shorttermtrades.dart';
+import 'package:folio/screens/picks/dividendstars.dart';
+import 'package:folio/screens/picks/longtermtrades.dart';
+import 'package:folio/screens/picks/mediumtermtrades.dart';
+import 'package:folio/screens/picks/shorttermtrades.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
 

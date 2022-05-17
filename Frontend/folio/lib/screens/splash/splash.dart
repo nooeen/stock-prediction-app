@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:folio/screens/bottom_navigation.dart';
-import 'package:folio/screens/login.dart';
+import 'package:folio/screens/introduction/introduction.dart';
+import 'package:folio/screens/main/main.dart';
 import 'package:http/http.dart';
+import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -25,11 +25,12 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> loginCheck() async {
     await myStorage.ready;
+    await myStorage.clear();
 
     final _email = await myStorage.getItem('Email');
     final _password = await myStorage.getItem('Password');
 
-    const baseURL = 'http://4a67-110-226-206-82.ngrok.io/api';
+    const baseURL = 'http://127.0.0.1:8000/api';
     final url = Uri.parse('$baseURL/login/');
 
     Response response = await post(url, body: {
@@ -51,55 +52,45 @@ class _SplashScreenState extends State<SplashScreen> {
       await myStorage.setItem("Change", responseJson['change']);
       await myStorage.setItem("MediumTerm", responseJson['medium']);
       await myStorage.setItem("LongTerm", responseJson['long']);
-      Navigator.pushAndRemoveUntil(
-          context,
-          PageTransition(
-            duration: const Duration(milliseconds: 500),
-            type: PageTransitionType.rightToLeft,
-            child: const BottomNavigation(),
-          ),
-          (route) => false);
+      await Future.delayed(const Duration(seconds: 5)).then((value) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            PageTransition(
+              duration: const Duration(milliseconds: 500),
+              type: PageTransitionType.rightToLeft,
+              child: const MainScreen(),
+            ),
+            (route) => false);
+      });
     } else {
-      Navigator.pushAndRemoveUntil(
-          context,
-          PageTransition(
-            duration: const Duration(milliseconds: 500),
-            type: PageTransitionType.rightToLeft,
-            child: const Login(),
-          ),
-          (route) => false);
+      await Future.delayed(const Duration(seconds: 5)).then((value) {
+        Navigator.pushAndRemoveUntil(
+            context,
+            PageTransition(
+              duration: const Duration(milliseconds: 500),
+              type: PageTransitionType.rightToLeft,
+              child: const IntroductionScreen(),
+            ),
+            (route) => false);
+      });
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF10111A),
+      backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              alignment: Alignment.center,
-              child: Image.asset(
-                'assets/images/favicon.png',
-                width: 220,
-              ),
-            ),
-            const SizedBox(height: 7),
-            Container(
-              child: (const Text(
-                'folio',
-                style: TextStyle(
-                    color: Color(0xffFFD632),
-                    fontFamily: "Avenir",
-                    fontSize: 35,
-                    fontWeight: FontWeight.w900),
-              )),
-            ),
-          ],
-        ),
-      ),
+          child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/images/logo.png',
+            height: 150,
+          ),
+        ],
+      )),
     );
   }
 }

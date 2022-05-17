@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:folio/screens/add_stock_screen.dart';
-import 'package:folio/screens/dividendstars.dart';
-import 'package:folio/screens/existing_stock_screen.dart';
-import 'package:folio/screens/longtermtrades.dart';
-import 'package:folio/screens/mediumtermtrades.dart';
-import 'package:folio/screens/shorttermtrades.dart';
+import 'package:folio/screens/stock/add_stock_screen.dart';
+import 'package:folio/screens/stock/existing_stock_screen.dart';
+import 'package:folio/screens/picks/dividendstars.dart';
+import 'package:folio/screens/picks/longtermtrades.dart';
+import 'package:folio/screens/picks/mediumtermtrades.dart';
+import 'package:folio/screens/picks/shorttermtrades.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
@@ -22,11 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
   String _currentvalue = "";
   String _investedValue = "";
   List _portfolio = [];
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
         scrollDirection: Axis.vertical,
         child: Column(children: [
           Container(
-            color: const Color(0xff151321),
+            color: Colors.white,
             child: Column(children: [
               Container(
                 padding: const EdgeInsets.only(
@@ -69,8 +64,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         'Hi, $_name',
                         style: const TextStyle(
-                          color: Color(0xffffffff),
-                          fontFamily: "Avenir",
+                          color: Colors.black,
+                          fontFamily: "Trueno",
                           fontSize: 20,
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.none,
@@ -78,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       IconButton(
                         alignment: Alignment.center,
-                        icon: Image.asset('assets/images/add_icon.png'),
+                        icon: const Icon(Icons.add),
                         onPressed: () {
                           Navigator.push(
                             context,
@@ -102,7 +97,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  color: const Color(0xff212230),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: const Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
                 ),
                 padding: const EdgeInsets.all(16),
                 child: Column(children: [
@@ -120,8 +123,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: const Text(
                                 'Your Portfolio\'s Value',
                                 style: TextStyle(
-                                  color: Color(0xffc0c0c0),
-                                  fontFamily: "Avenir",
+                                  color: Colors.black,
+                                  fontFamily: "Trueno",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w800,
                                   decoration: TextDecoration.none,
@@ -136,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 style: const TextStyle(
                                     color: Color(0xffffcd4c),
                                     fontSize: 20,
-                                    fontFamily: "Avenir",
+                                    fontFamily: "Trueno",
                                     fontWeight: FontWeight.w800,
                                     decoration: TextDecoration.none),
                               ),
@@ -153,8 +156,8 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: const Text(
                                 'Invested Value',
                                 style: TextStyle(
-                                  color: Color(0xffc0c0c0),
-                                  fontFamily: "Avenir",
+                                  color: Colors.black,
+                                  fontFamily: "Trueno",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w800,
                                   decoration: TextDecoration.none,
@@ -167,13 +170,13 @@ class _HomeScreenState extends State<HomeScreen> {
                               style: TextStyle(
                                   color: (double.parse(_currentvalue) >
                                           double.parse(_investedValue))
-                                      ? const Color(0xff30B451)
+                                      ? const Color.fromARGB(255, 75, 252, 120)
                                       : (double.parse(_currentvalue) <
                                               double.parse(_investedValue))
                                           ? const Color(0xffF44336)
                                           : const Color(0xffffcd4c),
                                   fontSize: 20,
-                                  fontFamily: "Avenir",
+                                  fontFamily: "Trueno",
                                   fontWeight: FontWeight.w800,
                                   decoration: TextDecoration.none),
                             ),
@@ -191,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       style: TextStyle(
                         color: (double.parse(_currentvalue) >
                                 double.parse(_investedValue))
-                            ? const Color(0xff30B451)
+                            ? const Color.fromARGB(255, 75, 252, 120)
                             : (double.parse(_currentvalue) <
                                     double.parse(_investedValue))
                                 ? const Color(0xffF44336)
@@ -211,11 +214,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: const [
                     Text(
-                      "A Quick Summary",
+                      "Your Portfolio",
                       style: TextStyle(
-                          color: Color(0xffc0c0c0),
+                          color: Colors.black,
                           fontSize: 16,
-                          fontFamily: "Avenir",
+                          fontFamily: "Trueno",
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.none),
                     ),
@@ -246,9 +249,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       "Our Top Picks",
                       style: TextStyle(
-                          color: Color(0xffc0c0c0),
+                          color: Colors.black,
                           fontSize: 16,
-                          fontFamily: "Avenir",
+                          fontFamily: "Trueno",
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.none),
                     ),
@@ -274,7 +277,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ourPicks(
                               context,
                               "Medium Term Picks",
-                              "1 Months to 3 Months",
+                              "1 Month to 3 Months",
                               "assets/images/stopwatch_yellow.png",
                               const MediumTermTrades()),
                         ],
@@ -329,13 +332,21 @@ portfolioStock(context, name, price, icon) {
       margin: const EdgeInsets.fromLTRB(5, 0, 10, 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: const Color(0xff212230),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ],
       ),
       padding: const EdgeInsets.all(16),
       child: Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisSize: MainAxisSize.min,
@@ -345,7 +356,7 @@ portfolioStock(context, name, price, icon) {
                 Container(
                   alignment: Alignment.center,
                   child: SvgPicture.network(icon),
-                  width: 45,
+                  width: 50,
                 ),
                 Column(
                   mainAxisSize: MainAxisSize.min,
@@ -353,12 +364,12 @@ portfolioStock(context, name, price, icon) {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      padding: const EdgeInsets.only(left: 15),
+                      padding: const EdgeInsets.only(left: 15, top: 5),
                       child: Text(
                         name,
                         style: const TextStyle(
-                          color: Color(0xffc0c0c0),
-                          fontFamily: "Avenir",
+                          color: Colors.black,
+                          fontFamily: "Trueno",
                           fontSize: 14,
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.none,
@@ -371,9 +382,9 @@ portfolioStock(context, name, price, icon) {
                       child: Text(
                         price,
                         style: const TextStyle(
-                          color: Color(0xffc0c0c0),
+                          color: Colors.black,
                           fontSize: 14,
-                          fontFamily: "Avenir",
+                          fontFamily: "Trueno",
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.none,
                         ),
@@ -395,7 +406,7 @@ ourPicks(context, name, description, icon, child) {
         context,
         PageTransition(
           duration: const Duration(milliseconds: 500),
-          type: PageTransitionType.bottomToTop,
+          type: PageTransitionType.rightToLeft,
           child: child,
         ),
       );
@@ -405,12 +416,20 @@ ourPicks(context, name, description, icon, child) {
       width: MediaQuery.of(context).size.width * 0.42,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: const Color(0xff212230),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ],
       ),
       padding: const EdgeInsets.only(left: 15, right: 15, top: 16, bottom: 16),
       child: Column(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
@@ -422,15 +441,17 @@ ourPicks(context, name, description, icon, child) {
             ),
             Container(
               alignment: Alignment.center,
-              child: Text(
-                name,
-                maxLines: 1,
-                style: const TextStyle(
-                  color: Color(0xffc0c0c0),
-                  fontFamily: "Avenir",
-                  fontSize: 14,
-                  fontWeight: FontWeight.w800,
-                  decoration: TextDecoration.none,
+              child: Center(
+                child: Text(
+                  name,
+                  maxLines: 1,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontFamily: "Trueno",
+                    fontSize: 13,
+                    fontWeight: FontWeight.w800,
+                    decoration: TextDecoration.none,
+                  ),
                 ),
               ),
             ),
@@ -441,8 +462,8 @@ ourPicks(context, name, description, icon, child) {
                 maxLines: 1,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  color: Color(0xffc0c0c0),
-                  fontFamily: "Avenir",
+                  color: Colors.black,
+                  fontFamily: "Trueno",
                   fontSize: 12,
                   fontWeight: FontWeight.w800,
                   decoration: TextDecoration.none,

@@ -1,11 +1,10 @@
 import 'dart:convert';
-
+import 'package:http/http.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:folio/screens/stock_basic_info_screen.dart';
-import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:folio/screens/stock/stock_basic_info_screen.dart';
 
 class LongTermTrades extends StatefulWidget {
   const LongTermTrades({Key? key}) : super(key: key);
@@ -26,7 +25,7 @@ class _LongTermTradesState extends State<LongTermTrades> {
   _sendDetails() async {
     await myStorage.ready;
 
-    const baseURL = 'http://4a67-110-226-206-82.ngrok.io/api';
+    const baseURL = 'http://127.0.0.1:8000/api';
     final url = Uri.parse('$baseURL/search/');
 
     Response response = await post(url, body: {

@@ -1,20 +1,19 @@
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:folio/screens/stock_basic_info_screen.dart';
 import 'package:http/http.dart';
+import 'package:flutter/material.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:folio/screens/stock/stock_basic_info_screen.dart';
 
-class MediumTermTrades extends StatefulWidget {
-  const MediumTermTrades({Key? key}) : super(key: key);
+class ShortTermTrades extends StatefulWidget {
+  const ShortTermTrades({Key? key}) : super(key: key);
 
   @override
-  State<MediumTermTrades> createState() => _MediumTermTradesState();
+  State<ShortTermTrades> createState() => _ShortTermTradesState();
 }
 
-class _MediumTermTradesState extends State<MediumTermTrades> {
+class _ShortTermTradesState extends State<ShortTermTrades> {
   final LocalStorage myStorage = LocalStorage('fintech');
   String _stockCode = "";
 
@@ -26,7 +25,7 @@ class _MediumTermTradesState extends State<MediumTermTrades> {
   _sendDetails() async {
     await myStorage.ready;
 
-    const baseURL = 'http://4a67-110-226-206-82.ngrok.io/api';
+    const baseURL = 'http://127.0.0.1:8000/api';
     final url = Uri.parse('$baseURL/search/');
 
     Response response = await post(url, body: {
@@ -152,7 +151,7 @@ class _MediumTermTradesState extends State<MediumTermTrades> {
           },
         ),
         title: const Text(
-          'Medium Term Picks',
+          'Short Term Picks',
           style: TextStyle(
               color: Colors.white,
               fontSize: 19,
@@ -185,10 +184,10 @@ class _MediumTermTradesState extends State<MediumTermTrades> {
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
-                      "Shree Cement Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/shree-cement--big.svg",
-                      "25260.65",
-                      "SHREECEM"),
+                      "Maruti Suzuki India Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/maruti-suzuki-india--big.svg",
+                      "7557.95",
+                      "MARUTI"),
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
@@ -206,24 +205,24 @@ class _MediumTermTradesState extends State<MediumTermTrades> {
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
-                      "Tata Steel Ltd.",
+                      "Infosys Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/infosys--big.svg",
+                      "1814.6",
+                      "INFY"),
+                  const SizedBox(height: 20),
+                  stocktabs(
+                      context,
+                      "Tata Consultancy Services Ltd.",
                       "https://s3-symbol-logo.tradingview.com/tata--big.svg",
-                      "1370.75",
-                      "TATASTEEL"),
+                      "3685.65",
+                      "TCS"),
                   const SizedBox(height: 20),
                   stocktabs(
                       context,
-                      "Hindustan Unilever Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/unilever--big.svg",
-                      "2183.05",
-                      "HINDUNILVR"),
-                  const SizedBox(height: 20),
-                  stocktabs(
-                      context,
-                      "Dr. Reddy's Laboratories Ltd.",
-                      "https://s3-symbol-logo.tradingview.com/dr-reddys--big.svg",
-                      "4430.35",
-                      "DRREDDY"),
+                      "Britannia Industries Ltd.",
+                      "https://s3-symbol-logo.tradingview.com/britannia--big.svg",
+                      "3482.64",
+                      "BRITANNIA"),
                 ]),
               ),
             ]),
