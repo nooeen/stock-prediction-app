@@ -77,8 +77,6 @@ class _MediumTermTradesState extends State<MediumTermTrades> {
         ),
         padding: const EdgeInsets.only(
           top: 15,
-          left: 15,
-          right: 5,
           bottom: 15,
         ),
         child: Row(
@@ -86,10 +84,13 @@ class _MediumTermTradesState extends State<MediumTermTrades> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                alignment: Alignment.center,
-                child: SvgPicture.network(logo),
-                width: 80,
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Container(
+                  alignment: Alignment.center,
+                  child: SvgPicture.network(logo),
+                  width: 80,
+                ),
               ),
               Column(
                   mainAxisSize: MainAxisSize.min,

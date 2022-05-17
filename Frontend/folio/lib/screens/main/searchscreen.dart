@@ -56,6 +56,7 @@ class _SearchStockState extends State<SearchStock> {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text("Stock Not Found."),
         backgroundColor: Color(0xFFE43434),
+        behavior: SnackBarBehavior.floating,
       ));
     }
   }
@@ -64,10 +65,10 @@ class _SearchStockState extends State<SearchStock> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Container(
-        color: const Color(0xff151321),
+        color: Colors.white,
         child: Column(children: [
           Container(
-            color: const Color(0xff151321),
+            color: Colors.white,
             child: Column(children: [
               Container(
                 alignment: Alignment.centerLeft,
@@ -80,8 +81,8 @@ class _SearchStockState extends State<SearchStock> {
                 child: const Text(
                   'Find A Stock',
                   style: TextStyle(
-                    color: Color(0xffffffff),
-                    fontFamily: "Avenir",
+                    color: Colors.black,
+                    fontFamily: "Trueno",
                     fontSize: 20,
                     fontWeight: FontWeight.w800,
                     decoration: TextDecoration.none,
@@ -100,25 +101,23 @@ class _SearchStockState extends State<SearchStock> {
                   keyboardType: TextInputType.text,
                   textCapitalization: TextCapitalization.characters,
                   style: const TextStyle(
-                    color: Color(0xff00c9ff),
+                    color: Colors.black,
                     fontSize: 20,
-                    fontFamily: "avenir",
+                    fontFamily: "Trueno",
                   ),
                   decoration: const InputDecoration(
                     labelText: 'Stock Short Code',
                     labelStyle: TextStyle(
-                      color: Color(0xff00c9ff),
+                      color: Colors.black,
                       fontSize: 18,
-                      fontFamily: "avenir",
+                      fontFamily: "Trueno",
+                    ),
+                    helperStyle: TextStyle(color: Colors.black),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey),
                     ),
                     focusedBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(color: Color(0xff00c9ff)),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Color(0xffc0c0c0),
-                        width: 0.0,
-                      ),
+                      borderSide: BorderSide(color: Colors.grey),
                     ),
                   ),
                   onChanged: (value) {
@@ -145,39 +144,25 @@ class _SearchStockState extends State<SearchStock> {
                     width: MediaQuery.of(context).size.width * 0.9,
                     padding: const EdgeInsets.only(
                       top: 15,
-                      left: 25,
-                      right: 25,
                       bottom: 10,
                     ),
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      color: const Color(0xff00c9ff),
+                      color: Colors.black,
                     ),
                     child: const Text(
                       'Search',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,
-                        fontFamily: "avenir",
+                        fontFamily: "Trueno",
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 150),
-              const Text(
-                'Search What You Want\nSearch What You Need\nSearch With Folio\nEarn When You Sleep',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xffffffff),
-                  fontFamily: "Avenir",
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.italic,
-                  decoration: TextDecoration.none,
-                ),
-              )
             ]),
           )
         ]),

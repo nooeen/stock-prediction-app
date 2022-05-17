@@ -73,12 +73,18 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
         width: MediaQuery.of(context).size.width * 0.9,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
-          color: const Color(0xff212230),
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.grey.withOpacity(0.5),
+              spreadRadius: 5,
+              blurRadius: 7,
+              offset: const Offset(0, 3), // changes position of shadow
+            ),
+          ],
         ),
         padding: const EdgeInsets.only(
           top: 15,
-          left: 15,
-          right: 5,
           bottom: 15,
         ),
         child: Row(
@@ -86,10 +92,13 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                alignment: Alignment.center,
-                child: SvgPicture.network(logo),
-                width: 80,
+              Padding(
+                padding: const EdgeInsets.only(left: 12.0),
+                child: Container(
+                  alignment: Alignment.center,
+                  child: SvgPicture.network(logo),
+                  width: 80,
+                ),
               ),
               Column(
                   mainAxisSize: MainAxisSize.min,
@@ -105,8 +114,8 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
                         maxLines: 1,
                         softWrap: false,
                         style: const TextStyle(
-                          color: Color(0xffffffff),
-                          fontFamily: "Avenir",
+                          color: Colors.black,
+                          fontFamily: "Trueno",
                           fontSize: 16,
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.none,
@@ -119,10 +128,10 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
                       child: Text(
                         "Price: ₹ $lastprice",
                         style: const TextStyle(
-                          color: Color(0xffc0c0c0),
+                          color: Colors.black,
                           fontSize: 14,
-                          fontFamily: "Avenir",
-                          fontWeight: FontWeight.w800,
+                          fontFamily: "Trueno",
+                          fontWeight: FontWeight.w400,
                           decoration: TextDecoration.none,
                         ),
                       ),
@@ -137,14 +146,14 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff151321),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: const Color(0xff151321),
+        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back,
-            color: Colors.white,
+            color: Colors.black,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -153,17 +162,17 @@ class _ShortTermTradesState extends State<ShortTermTrades> {
         title: const Text(
           'Short Term Picks',
           style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontSize: 19,
               fontWeight: FontWeight.bold,
-              fontFamily: "avenir"),
+              fontFamily: "Trueno"),
         ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Container(
-            color: const Color(0xff151321),
+            color: Colors.white,
             child: Column(children: [
               Container(
                 margin: const EdgeInsets.only(

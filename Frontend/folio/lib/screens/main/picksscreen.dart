@@ -27,10 +27,10 @@ class _PicksScreenState extends State<PicksScreen> {
       child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         child: Container(
-          color: const Color(0xff151321),
+          color: Colors.white,
           child: Column(children: [
             Container(
-              color: const Color(0xff151321),
+              color: Colors.white,
               child: Column(children: [
                 Container(
                   alignment: Alignment.centerLeft,
@@ -43,8 +43,8 @@ class _PicksScreenState extends State<PicksScreen> {
                   child: const Text(
                     'Top Picks',
                     style: TextStyle(
-                      color: Color(0xffffffff),
-                      fontFamily: "Avenir",
+                      color: Colors.black,
+                      fontFamily: "Trueno",
                       fontSize: 20,
                       fontWeight: FontWeight.w800,
                       decoration: TextDecoration.none,
@@ -110,7 +110,7 @@ pickstabs(context, name, logo, duration, description, child) {
         context,
         PageTransition(
           duration: const Duration(milliseconds: 500),
-          type: PageTransitionType.bottomToTop,
+          type: PageTransitionType.rightToLeft,
           child: child,
         ),
       );
@@ -119,12 +119,18 @@ pickstabs(context, name, logo, duration, description, child) {
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: const Color(0xff212230),
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 5,
+            blurRadius: 7,
+            offset: const Offset(0, 3), // changes position of shadow
+          ),
+        ],
       ),
       padding: const EdgeInsets.only(
         top: 15,
-        left: 15,
-        right: 5,
         bottom: 15,
       ),
       child: Row(
@@ -132,10 +138,13 @@ pickstabs(context, name, logo, duration, description, child) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              alignment: Alignment.center,
-              child: Image.asset("$logo"),
-              width: 80,
+            Padding(
+              padding: const EdgeInsets.only(left: 12.0),
+              child: Container(
+                alignment: Alignment.center,
+                child: Image.asset("$logo"),
+                width: 80,
+              ),
             ),
             Column(
                 mainAxisSize: MainAxisSize.min,
@@ -151,8 +160,8 @@ pickstabs(context, name, logo, duration, description, child) {
                       maxLines: 1,
                       softWrap: false,
                       style: const TextStyle(
-                        color: Color(0xffffffff),
-                        fontFamily: "Avenir",
+                        color: Colors.black,
+                        fontFamily: "Trueno",
                         fontSize: 16,
                         fontWeight: FontWeight.w800,
                         decoration: TextDecoration.none,
@@ -165,10 +174,10 @@ pickstabs(context, name, logo, duration, description, child) {
                     child: Text(
                       "Duration: $duration",
                       style: const TextStyle(
-                        color: Color(0xffc0c0c0),
+                        color: Colors.black,
                         fontSize: 14,
-                        fontFamily: "Avenir",
-                        fontWeight: FontWeight.w800,
+                        fontFamily: "Trueno",
+                        fontWeight: FontWeight.w500,
                         decoration: TextDecoration.none,
                       ),
                     ),
@@ -179,10 +188,10 @@ pickstabs(context, name, logo, duration, description, child) {
                     child: Text(
                       "$description",
                       style: const TextStyle(
-                        color: Color(0xffc0c0c0),
-                        fontSize: 14,
-                        fontFamily: "Avenir",
-                        fontWeight: FontWeight.w600,
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontFamily: "Trueno",
+                        fontWeight: FontWeight.w200,
                         decoration: TextDecoration.none,
                         fontStyle: FontStyle.italic,
                       ),
